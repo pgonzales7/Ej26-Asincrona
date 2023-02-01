@@ -1,0 +1,34 @@
+<section class="login-container">
+
+  <form class="mt-5">
+
+    <section *ngIf="error" class="alert alert-danger text-center">
+      El usuario no existe
+    </section>
+    <h2 class="center">Login</h2>
+
+    <section>
+      <mat-form-field class="mb-3" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput autocomplete="off" name="username" required [(ngModel)]="user.username" #username="ngModel">
+        <mat-hint *ngIf="username?.touched && username?.errors?.['required'] then required"></mat-hint>
+      </mat-form-field>
+    </section>
+
+    <section>
+      <mat-form-field class="mb-3" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="text" matInput autocomplete="off" name="email" required [(ngModel)]="user.email" #email="ngModel">
+        <mat-hint *ngIf="email?.touched && email?.errors?.['required'] then required"></mat-hint>
+      </mat-form-field>
+    </section>
+      <section>
+        <button class="w-100" mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+      </section>
+  </form>
+
+</section>
+
+<ng-template #required>
+  <p style="color: red;">Este campo es necesario</p>
+</ng-template>
